@@ -5,6 +5,7 @@ import * as api from '../utils/api'
 import { lightBlack, purple } from '../utils/colors'
 import { ListItem, Button, Card, Badge } from 'react-native-elements'
 import { connect } from 'react-redux'
+import styles from '../utils/styles'
 
 const initialState = {
   isFinished: false,
@@ -150,42 +151,3 @@ function mapStateToProps(state, { navigation }) {
 }
 
 export default connect(mapStateToProps)(Quiz);
-
-const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-    paddingHorizontal: 30,
-    paddingVertical: 30,
-  },
-
-  text: {
-    fontSize: 16,
-    alignSelf: 'stretch',
-    textAlign: 'center',
-    color: lightBlack,
-  },
-
-  badgeStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 0,
-    marginTop: 50
-  },
-
-  card: { flex: 1 },
-
-  cardDetailView: {
-    flex: 1,
-    justifyContent: 'center',
-    marginBottom: 25,
-    marginTop: 25
-  },
-
-  title: {
-    fontSize: 30,
-  },
-
-  divider: {
-    marginTop: 10,
-  }
-});

@@ -5,6 +5,8 @@ import { lightBlack, gray, purple } from '../utils/colors'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import styles from '../utils/styles'
+
 const Deck = props => {
   const { deck, navigation } = props;
   const { cards } = deck;
@@ -60,31 +62,3 @@ function mapStateToProps({ decks }, { navigation }) {
 }
 
 export default connect(mapStateToProps)(Deck);
-
-const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-    paddingBottom: 50,
-    paddingHorizontal: 50,
-  },
-  deck: {
-    flex: 1,
-    justifyContent: 'center',
-  },  
-  title: {
-    fontSize: 30,
-    alignSelf: 'stretch',
-    color: lightBlack,    
-    textAlign: 'center',
-  },
-  cards: {
-    fontSize: 15,
-    color: gray,
-    textAlign: 'center',
-    alignSelf: 'stretch',   
-    marginTop: 5,
-  },
-  divider: {
-    marginTop: 10,
-  },
-});

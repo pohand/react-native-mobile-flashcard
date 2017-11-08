@@ -6,6 +6,7 @@ import { addCardToDeck } from '../actions'
 import { Button, FormInput, FormLabel } from 'react-native-elements'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import styles from '../utils/styles'
 
 const initialState = { question: '', answer: '' };
 
@@ -16,12 +17,12 @@ class AddCard extends Component {
   state = initialState;
 
   submit = () => {
-    const { deck, actions, navigation } = this.props;
+    const { deck, navigation } = this.props;
     const { question, answer } = this.state;
     const changedDeck = { ...deck };
 
     changedDeck.cards.push({ question, answer });
-    actions.addCardToDeck(changedDeck);
+    this.props.addCardToDeck(changedDeck);
     this.setState(initialState);
     navigation.goBack();
   };
@@ -67,10 +68,7 @@ class AddCard extends Component {
 AddCard.propTypes = {
   navigation: PropTypes.shape({
     goBack: PropTypes.func.isRequired,
-  }).isRequired,
-  actions: PropTypes.shape({
-    addCardToDeck: PropTypes.func.isRequired,
-  }).isRequired,
+  }).isRequired,  
   deck: PropTypes.shape({
     title: PropTypes.string.isRequired,
     cards: PropTypes.array.isRequired,
@@ -83,21 +81,4 @@ function mapStateToProps(state, { navigation }) {
   return { deck };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({ addCardToDeck }, dispatch),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddCard);
-
-const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-    paddingVertical: 50,
-    paddingHorizontal: 50,
-  },
-  divider: {
-    marginTop: 40,
-  },
-});
+export default connect(mapStateToProps, {addCardToDeck})(AddCard);

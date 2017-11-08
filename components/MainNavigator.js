@@ -8,6 +8,10 @@ import React from 'react';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { orange } from '../utils/colors'
 
+import { StyleSheet, View, StatusBar, Text, TouchableOpacity } from 'react-native'
+import { Card, ListItem, Button } from 'react-native-elements'
+import styles from '../utils/styles'
+
 const Tabs = TabNavigator(
   {
     Decks: {
@@ -40,11 +44,38 @@ const Tabs = TabNavigator(
   }
 );
 
+const Home = ({ navigation }) => (
+  <View style={styles.view} >
+    <Text style={styles.title} >Hello Guest</Text>
+    <TouchableOpacity onPress={() => navigation.navigate('Tabs')}>
+      <Button
+        raised
+        icon={{ name: 'cached' }}
+        title='Enjoy Flash Card'
+        backgroundColor='#397af8'
+        onPress={() => navigation.navigate('Tabs')}
+      ></Button>
+    </TouchableOpacity>
+  </View>
+);
+
 const MainNavigator = StackNavigator({
   Home: {
+    screen: Home,
+    navigationOptions: {
+      title: "WELCOME TO FLASH CARDS",
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: 'purple',
+        justifyContent: 'center'
+      },
+      headerTitleStyle: { alignSelf: 'center' }
+    }
+  },
+  Tabs: {
     screen: Tabs,
     navigationOptions: {
-      title: "FLASH CARDS",
+      title: "DASHBOARD",
       headerTintColor: "white",
       headerStyle: {
         backgroundColor: 'purple',
@@ -84,6 +115,6 @@ const MainNavigator = StackNavigator({
       }
     }
   }
-});
+})
 
 export default MainNavigator;

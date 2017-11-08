@@ -4,7 +4,7 @@ import { LOADING_DECKS, SAVE_DECK, UPDATE_DECK } from '../actions';
 const initState = [
   {
     title: 'React',
-    questions: [
+    cards: [
       {
         question: 'What is React?',
         answer: 'A library for managing user interfaces'
@@ -17,7 +17,7 @@ const initState = [
   },
   {
     title: 'JavaScript',
-    questions: [
+    cards: [
       {
         question: 'What is a closure?',
         answer: 'The combination of a function and the lexical environment within which that function was declared.'
@@ -29,7 +29,7 @@ const initState = [
 function decks(state = [], action) {
   switch (action.type) {
     case LOADING_DECKS:
-      return [...state, ...action.payload];
+      return [...action.payload];
     case SAVE_DECK:
       return [...state, action.payload];
     case UPDATE_DECK:

@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions } from 'react-navigation'
 import { saveDeckTitle } from '../actions'
 import { connect } from 'react-redux'
+import styles from '../utils/styles'
 
 const initialState = { title: '' };
 
@@ -15,7 +16,7 @@ class AddDeck extends Component {
   state = initialState;
 
   submit = () => {
-    const { actions, navigation } = this.props;
+    const { navigation } = this.props;
     const { title } = this.state;
 
     this.props.saveDeckTitle({ title, cards: [] });
@@ -62,16 +63,3 @@ AddDeck.propTypes = {
 };
 
 export default connect(null, { saveDeckTitle })(AddDeck);
-
-const styles = StyleSheet.create({
-  view: {
-    paddingVertical: 50,
-    paddingHorizontal: 50,
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  title: {
-    fontSize: 30,
-    textAlign: 'center',
-  }
-});
