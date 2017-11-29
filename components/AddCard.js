@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, TextInput } from 'react-native'
+import { StyleSheet, View, TextInput, KeyboardAvoidingView } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { lightGray } from '../utils/colors'
 import { addCardToDeck } from '../actions'
@@ -35,7 +35,7 @@ class AddCard extends Component {
     const disabled = questionEmpty || answerEmpty
 
     return (
-      <View style={styles.view}>
+      <KeyboardAvoidingView style={styles.view}>
         <FormLabel>Question</FormLabel>
         <FormInput
           value={question}
@@ -60,7 +60,7 @@ class AddCard extends Component {
             disabled={disabled}
           />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
